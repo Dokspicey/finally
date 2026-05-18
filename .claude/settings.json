@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
-    "independent-reviewer@doks-tools": true
+    "independent-reviewer@doks-tools": true,
+    "playwright@claude-plugins-official": true
   }
 }
