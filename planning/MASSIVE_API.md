@@ -4,7 +4,7 @@ Reference documentation for the Massive REST API as used in FinAlly. Massive is 
 
 ## At a Glance
 
-| | |
+| | 
 |---|---|
 | **Docs site** | `https://massive.com/docs` |
 | **Base URL** | `https://api.massive.com` (legacy `https://api.polygon.io` still works) |

@@ -1,0 +1,36 @@
+.git
+.github
+.gitignore
+.env
+.env.*
+!.env.example
+
+# Backend caches & local artifacts
+backend/.venv
+backend/__pycache__
+backend/**/__pycache__
+backend/.pytest_cache
+backend/.ruff_cache
+backend/htmlcov
+backend/.coverage
+backend/.coverage.*
+
+# Frontend artifacts (will exist post task #6)
+frontend/node_modules
+frontend/.next
+frontend/out
+
+# Host-side SQLite data — bind-mounted at runtime, never baked into the image
+db/finally.db
+db/*.db-journal
+db/*.db-wal
+db/*.db-shm
+
+# Misc
+**/.DS_Store
+test/node_modules
+test/playwright-report
+test/test-results
+planning
+.claude
+.claude-plugin

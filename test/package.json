@@ -1,0 +1,17 @@
+{
+  "name": "finally-e2e",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Playwright E2E suite for FinAlly — drives the production Docker container.",
+  "scripts": {
+    "up": "docker compose -f docker-compose.test.yml up -d --build && bash ./wait-for-health.sh",
+    "down": "docker compose -f docker-compose.test.yml down -v",
+    "logs": "docker compose -f docker-compose.test.yml logs --tail=200 app",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "e2e": "npm run up && (npm run test; rc=$?; npm run down; exit $rc)"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}

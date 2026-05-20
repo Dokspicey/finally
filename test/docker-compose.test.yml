@@ -1,0 +1,33 @@
+# E2E test stack — runs the production `finally` image with deterministic
+# environment for Playwright:
+#   * LLM_MOCK=true             → no OpenAI calls; deterministic chat fixtures
+#   * MASSIVE_API_KEY (empty)   → forces the simulator (prices stream ~500ms)
+#   * OPENAI_API_KEY=test-mock  → satisfies any env-var presence check
+#
+# A throwaway named volume holds the SQLite DB so each `up -v` starts clean.
+# Port 8001 on the host avoids collisions with a dev container on 8000.
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: finally:e2e
+    container_name: finally-e2e
+    environment:
+      LLM_MOCK: "true"
+      MASSIVE_API_KEY: ""
+      OPENAI_API_KEY: "test-mock"
+    volumes:
+      - finally-e2e-db:/app/db
+    ports:
+      - "8001:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/api/health"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 5s
+
+volumes:
+  finally-e2e-db:

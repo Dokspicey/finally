@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+/* Subtle scrollbars in the data panes */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2f3a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f4a;
+}
+
+.flash-up {
+  animation: flashUp 500ms ease-out;
+}
+.flash-down {
+  animation: flashDown 500ms ease-out;
+}
+
+@keyframes flashUp {
+  0% {
+    background-color: rgba(34, 197, 94, 0.45);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes flashDown {
+  0% {
+    background-color: rgba(239, 68, 68, 0.45);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.panel {
+  background-color: #11161f;
+  border: 1px solid #2a2f3a;
+  border-radius: 0.5rem;
+}
+
+.panel-header {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #2a2f3a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.7rem;
+  color: #9ba3b4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
